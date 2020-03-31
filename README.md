@@ -1,2 +1,1 @@
-# mae.lapresta-gmail.com
-CS340_starter_app
+## CS340_starter_app
