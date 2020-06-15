@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}Update Person Page{% endblock %}
+
+
+{% block content %}
+
+    <h2>Update Person</h2>
+<!--form to add a new person-->
+    <form action = "/people/{{person[0]}}" method = "POST">
+      <fieldset>
+      <legend>Update person:</legend>
+      <label for="fname">First name:</label><br>
+      <input type="text" id="fname" name="fname" value="{{ person[1] }}"><br>
+      <label for="lname">Last name:</label><br>
+      <input type="text" id="lname" name="lname" value="{{ person[2] }}"><br>
+      <label for="world">Homeworld:</label>
+      <select id="hworld" name="hworld">
+        <option value="Caprica" {% if person[3] == 3 %} selected {% endif %}>Caprica</option>
+        <option value="Leonis" {% if person[3] == 2 %} selected {% endif %}>Leonis</option>
+        <option value="Tauron" {% if person[3] == 21 %} selected {% endif %}>Tauron</option>
+        <option value="Gemenon" {% if person[3] == 1 %} selected {% endif %}>Gemenon</option>
+      </select><br>
+      <label for="age">Age: </label>
+      <input type="number" id="age" name="age" min="1" max="150" value="{{ person[4] }}"><br>
+
+      <label for="cert">Choose certification/s:</label><br>
+      <!--This will be dynamically populated with all availble certifications-->
+      <select id="cert" name="cert" multiple>
+        {% for cert in certs %}
+        <option value="{{ cert[0] }}" {% if cert[0] in person_certs_list %} selected {% endif %} >{{ cert[1] }}</option>
+        {% endfor %}
+      </select><br>
+
+      <input type="submit">
+    </fieldset>
+  </form>
+
+{% endblock %}

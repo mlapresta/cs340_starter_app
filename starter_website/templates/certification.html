@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Certificate Page{% endblock %}
+
+
+{% block content %}
+    <h2>Certificates</h2>
+    <!--this will be a select query that shows all certificates-->
+    <table style="width:70%">
+      <tr>
+        <th>Certificate</th>
+      </tr>
+      {% for cert in certifications %}
+      <tr>
+        <td>{{cert[0]}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <br>
+
+    <form action = "/certification" method = "POST">
+      <fieldset style="width: 100%;">
+      <legend>Add new certificate:</legend>
+      <label for="certname">Name:</label><br>
+      <input type="text" id="certname" name="certname" style="width: 80%;"><br>
+      <input type="submit" value="submit">
+      </fieldset>
+    </form>
+
+  {% endblock %}
